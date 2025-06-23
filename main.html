@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Recognition Attendance System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        form {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Attendance System</h1>
+
+    <!-- Button to Register New User -->
+    <button onclick="runNewUser()">Register New User</button>
+
+    <!-- Button to Take Attendance -->
+    <button onclick="runTakeAttendance()">Take Attendance</button>
+
+    <!-- Button to View Attendance -->
+    <button onclick="viewAttendance()">View Attendance</button>
+
+    <script>
+        function runNewUser() {
+            fetch('/run_new_user', { method: 'POST' })
+                .then(response => response.text())
+                .then(data => alert(data))  // Show success/failure message
+                .catch(error => alert("Error: " + error));
+        }
+
+        function runTakeAttendance() {
+            fetch('/run_take_attendance', { method: 'POST' })
+                .then(response => response.text())
+                .then(data => alert(data))  // Show success/failure message
+                .catch(error => alert("Error: " + error));
+        }
+
+        function viewAttendance() {
+            window.location.href = '/attendance.html';  // Redirect to view attendance page (if available)
+        }
+    </script>
+</body>
+</html>
